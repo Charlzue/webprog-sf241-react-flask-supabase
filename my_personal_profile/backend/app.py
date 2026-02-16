@@ -32,6 +32,10 @@ def delete_entry(id):
     supabase.table("guestbook").delete().eq("id", id).execute()
     return jsonify({"message": "Deleted successfully"}), 200
 
+@app.route('/')
+def home():
+    return {"status": "Server is running!", "message": "Visit /guestbook for data"}, 200
+
 if __name__ == '__main__':
     # Use the PORT variable provided by Render, default to 5000 for local dev
     port = int(os.environ.get("PORT", 5000))
